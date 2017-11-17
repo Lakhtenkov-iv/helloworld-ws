@@ -1,0 +1,27 @@
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
+                              https://maven.apache.org/xsd/settings-1.0.0.xsd">
+  <mirrors>
+    <mirror>
+      <id>Proxy to Maven</id>
+      <name>Maven_proxy</name>
+      <url>http://nexus.local/repository/Maven_proxy/</url>
+      <mirrorOf>*</mirrorOf>
+    </mirror>
+  </mirrors>
+  <servers>
+    <server>
+      <id>Artifact_storage</id>
+      <username>jenkins</username>
+      <password>jenkins</password>
+    </server>
+    <server>
+      <id>Proxy to Maven</id>
+      <username>jenkins</username>
+      <password>jenkins</password>
+    </server>
+
+  </servers>
+  
+</settings>
