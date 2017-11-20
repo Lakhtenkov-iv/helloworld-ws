@@ -10,7 +10,7 @@ public class SimpleServlet extends HttpServlet {
     private String responseTemplate =
             "<html>\n" +
                     "<body>\n" +
-                    "<h2>Hell from Sample-</h2>\n" +
+                    "<h2>Hello from Sample-</h2>\n" +
                     "</body>\n" +
                     "</html>";
 
