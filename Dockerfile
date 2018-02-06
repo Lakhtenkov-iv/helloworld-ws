@@ -1,4 +1,4 @@
-FROM 8.5.27-jre8-alpine:latest
+FROM tomcat:8.5.27-jre8-alpine
 
 EXPOSE 8080
 
