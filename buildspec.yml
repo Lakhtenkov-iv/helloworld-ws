@@ -1,0 +1,23 @@
+version: 0.2
+
+env:
+  variables:
+    BUILD_NUMBER: "1"
+    IMAGE_REPO_NAME: "sample"
+
+phases:
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - $(aws ecr get-login --no-include-email --region $AWS_DEFAULT_REGION)
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Building the Docker image...
+      - docker build --build-arg BUILD_NUMBER=$BUILD_NUMBER -t $IMAGE_REPO_NAME:$BUILD_NUMBER .
+      - docker tag $IMAGE_REPO_NAME:$BUILD_NUMBER $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$BUILD_NUMBER       
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Pushing the Docker image...
+      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$BUILD_NUMBER 
